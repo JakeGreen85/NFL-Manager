@@ -1,0 +1,15 @@
+/Users/jakobgreen/Desktop/projects/NFL Manager/bin/Debug/net6.0/NFL Manager
+/Users/jakobgreen/Desktop/projects/NFL Manager/bin/Debug/net6.0/NFL Manager.deps.json
+/Users/jakobgreen/Desktop/projects/NFL Manager/bin/Debug/net6.0/NFL Manager.runtimeconfig.json
+/Users/jakobgreen/Desktop/projects/NFL Manager/bin/Debug/net6.0/NFL Manager.dll
+/Users/jakobgreen/Desktop/projects/NFL Manager/bin/Debug/net6.0/NFL Manager.pdb
+/Users/jakobgreen/Desktop/projects/NFL Manager/obj/Debug/net6.0/NFL Manager.csproj.AssemblyReference.cache
+/Users/jakobgreen/Desktop/projects/NFL Manager/obj/Debug/net6.0/NFL Manager.GeneratedMSBuildEditorConfig.editorconfig
+/Users/jakobgreen/Desktop/projects/NFL Manager/obj/Debug/net6.0/NFL Manager.AssemblyInfoInputs.cache
+/Users/jakobgreen/Desktop/projects/NFL Manager/obj/Debug/net6.0/NFL Manager.AssemblyInfo.cs
+/Users/jakobgreen/Desktop/projects/NFL Manager/obj/Debug/net6.0/NFL Manager.csproj.CoreCompileInputs.cache
+/Users/jakobgreen/Desktop/projects/NFL Manager/obj/Debug/net6.0/NFL Manager.dll
+/Users/jakobgreen/Desktop/projects/NFL Manager/obj/Debug/net6.0/refint/NFL Manager.dll
+/Users/jakobgreen/Desktop/projects/NFL Manager/obj/Debug/net6.0/NFL Manager.pdb
+/Users/jakobgreen/Desktop/projects/NFL Manager/obj/Debug/net6.0/NFL Manager.genruntimeconfig.cache
+/Users/jakobgreen/Desktop/projects/NFL Manager/obj/Debug/net6.0/ref/NFL Manager.dll
