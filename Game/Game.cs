@@ -3,9 +3,9 @@ using System;
 namespace ManagerGame
 {
     public class Game {
-        Team t1;
-        Team t2;
-        FootballGame fGame;
+        Team t1 = default!;
+        Team t2 = default!;
+        FootballGame fGame = default!;
         /// <summary>Creates an instance of the game class</summary>
         public Game () {
 
@@ -47,8 +47,9 @@ namespace ManagerGame
             if (input.Key == ConsoleKey.Y){
                 CreateRandomTeam(t1);
             }
+            
             else {
-                // Pick team
+                PickTeam();
             }
 
 
@@ -57,6 +58,21 @@ namespace ManagerGame
 
             fGame.StartGame();
 
+        }
+
+        private void PickTeam(){
+            Console.Clear();
+            var positions = new Position[5] {Position.QB, Position.RB, Position.WR, Position.OL, Position.TE};
+            
+            for (int i = 0; i < t1.oPlayers.Length; i++){
+                var newPlayers = new Player[3];
+                Console.WriteLine("Pick a " + positions[i]);
+                
+                for (int j = 0; j < newPlayers.Length; j++){
+                    newPlayers[j] = new OPlayer(positions[i]);
+                    Console.WriteLine((j+1) + ": " + newPlayers[j].fName[0]+ ". " + newPlayers[j].lName + " - " + newPlayers[j].Pos + ", " + newPlayers[j].Age + " - OVR: " + newPlayers[j].Overall);
+                }
+            }
         }
 
         /// <summary>

@@ -14,8 +14,10 @@ namespace ManagerGame
         private int Gain = default!;
         private PlayType playtype = default!;
         private Team activeTeam = default!;
+        private Team inactiveTeam = default!;
         private int hTeamScore = default!;
         private int aTeamScore = default!;
+        private string[] field = default!;
 
         /// <summary>Creates a game with two teams and the number of drives the game will last</summary>
         /// <returns>An instance of the football game class</returns>
@@ -24,6 +26,8 @@ namespace ManagerGame
             this.aTeam = t2;
             this.MaxDrives = maxDrives * 2;
             this.activeTeam = this.aTeam; // Away team starts with the ball
+            this.inactiveTeam = this.hTeam;
+            this.field = new string[100];
             NewDrive();
         }
 
@@ -43,13 +47,113 @@ namespace ManagerGame
 
         /// <summary>Switches the active team after a touchdown or turnover, usually</summary>
         private void SwitchSides(){
-            if (this.activeTeam == this.aTeam){
-                this.activeTeam = this.hTeam;
-            }
-            else {
-                this.activeTeam = this.aTeam;
-            }
+            var temp = this.activeTeam;
+            this.activeTeam = this.inactiveTeam;
+            this.inactiveTeam = temp;
             NewDrive();
+        }
+
+        /// <summary>
+        /// Updates the console with the newest information.
+        /// Pretty-prints field, score, down and distance, and where on the field they are
+        /// </summary>
+        private void UpdateField(){
+            // Clears console for better visuals
+            Console.Clear();
+
+            // For loop to print yard markers (0, 10, 20, 30, etc.)
+            for(int j = 0; j < 100; j++){
+                if (j % 10 == 0){
+                    
+                    if (j <= 50){
+                        Console.Write(j);
+                    }
+                    
+                    else {
+                        Console.Write(50 - (j % 50));
+                    }
+                }
+                
+                else if (j % 10 == 1){
+                }
+                
+                else {
+                    Console.Write(" ");
+                }
+            }
+            Console.WriteLine("0");
+
+            // Updates the field (specifically where the ball and first down is)
+            for(int i = 0; i < this.field.Length; i++){
+                if (i == YardLine){
+                    this.field[i] = "*";
+                }
+                
+                else if (i == YardLine + Distance){
+                    this.field[i] = "|";
+                }
+                
+                else{
+                    this.field[i] = "_";
+                }
+            }
+
+            // Prints the updated field
+            foreach(string s in this.field){
+                if (s == "*"){
+                    Console.ForegroundColor = ConsoleColor.Green;
+                }
+                
+                else if (s == "|"){
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                }
+                Console.Write(s);
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+
+
+            Console.WriteLine();
+
+            // Prints team names and the current score
+            Console.WriteLine(this.hTeam.Name + "   -   " + this.aTeam.Name);
+            Console.WriteLine(this.hTeamScore + "       " + this.aTeamScore);
+
+
+            Console.WriteLine();
+
+            // Prints the result of the last play
+            Console.WriteLine("Gain: " + Gain);
+
+            Console.WriteLine();
+            
+            // If the result of the play was not a touchdown, then display where the ball is and the down and distance
+            if (YardLine < 100){
+                if (YardLine > 50){ 
+                    Console.WriteLine("Yardline: " + this.inactiveTeam.Name + " " + (50 - (YardLine % 50)));
+                }
+                else{
+                    Console.WriteLine("YardLine: Own " + (YardLine));
+                }
+                Console.WriteLine(DownAndDistance());
+            }
+
+            // Check if a touchdown has been scored
+            if (YardLine >= 100){
+                Console.WriteLine("TOUCHDOWN!");
+                Console.WriteLine(this.activeTeam.Name + " scored");
+                
+                if (this.activeTeam == this.aTeam){
+                    this.aTeamScore += 6;
+                }
+                
+                else {
+                    this.hTeamScore += 6;
+                }
+
+                ExtraPoint();
+                SwitchSides();
+                NewDrive();
+            }
         }
 
         /// <summary>
@@ -60,70 +164,57 @@ namespace ManagerGame
         private void GameRunning(){
             while (currentDrive <= MaxDrives){
                 playtype = PlayTransformer.KeyToPlayType(Console.ReadKey().Key);
-                Console.Clear();
                 Console.WriteLine();
                 ExecutePlay();
-                Console.WriteLine("Gain: " + Gain);
-                Console.WriteLine();
-                if (YardLine < 100){
-                    if (YardLine > 50){ 
-                        Console.WriteLine("Yardline: " + (50 - (YardLine % 50)));
-                    }
-                    else{
-                        Console.WriteLine("YardLine: " + (-YardLine));
-                    }
-                    Console.WriteLine(DownAndDistance());
-                }
-                if (YardLine >= 100){
-                    Console.WriteLine("TOUCHDOWN!");
-                    Console.WriteLine(this.activeTeam.Name + " scored");
-                    if (this.activeTeam == this.aTeam){
-                        this.aTeamScore += 6;
-                    }
-                    else {
-                        this.hTeamScore += 6;
-                    }
-                    ExtraPoint();
-                    SwitchSides();
-                    NewDrive();
-                }
+                UpdateField();
             }
         }
 
         /// <summary>Runs extra point after touchdown</summary>
         private void ExtraPoint(){
+            UpdateField();
             Console.WriteLine("Go for 2?");
             playtype = PlayTransformer.KeyToPlayType(Console.ReadKey().Key);
+            
             if (playtype == PlayType.OnePoint){
                 var kick = rand.Next(100);
+                
                 if (kick < 92){
                     Console.WriteLine("Extra Point Good");
+                    
                     if (this.activeTeam == this.aTeam){
                         this.aTeamScore++;
                     }
+                    
                     else {
                         this.hTeamScore++;
                     }
                 }
+                
                 else {
                     Console.WriteLine("Extra Point Missed!");
                 }
             }
+            
             else {
                 Down = 1;
                 Distance = 3;
                 YardLine = 97;
                 playtype = PlayTransformer.KeyToPlayType(Console.ReadKey().Key);
                 ExecutePlay();
+                
                 if (YardLine >= 100){
                     Console.WriteLine("Extra Point Good");
+                    
                     if (this.activeTeam == this.aTeam){
                         this.aTeamScore += 2;
                     }
+                    
                     else {
                         this.hTeamScore += 2;
                     }
                 }
+                
                 else {
                     Console.WriteLine("No Good!");
                 }
@@ -134,14 +225,19 @@ namespace ManagerGame
         /// <returns>String of the down and distance. "(Down) and (Distance)</returns>
         private string DownAndDistance(){
             switch (Down){
+                
                 case (1) :
                     return "1st & " + Distance;
+                
                 case (2) :
                     return "2nd & " + Distance;
+                
                 case (3) :
                     return "3rd & " + Distance;
+                
                 case (4) :
                     return "4th & " + Distance;
+                
                 default :
                     return "Down and Distance not found";
             }
@@ -151,15 +247,19 @@ namespace ManagerGame
         private void ExecutePlay(){
             // Check playtype
             switch (playtype){
+                
                 case PlayType.RunPlay :
                     Gain = rand.Next(-2, 10);
                     break;
+                
                 case PlayType.PassPlay :
                     Gain = rand.Next(-10, 20);
                     break;
+                
                 case PlayType.Punt :
                     Down = 5;
                     break;
+                
                 default : 
                     Gain = rand.Next(-2, 10);
                     break;
@@ -173,6 +273,7 @@ namespace ManagerGame
             if (Distance > 0){
                 Down++;
             }
+
             else {
                 Console.WriteLine("FIRST DOWN!");
                 Down = 1;
