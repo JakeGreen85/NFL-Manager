@@ -18,6 +18,8 @@ namespace ManagerGame
         private int hTeamScore = default!;
         private int aTeamScore = default!;
         private string[] field = default!;
+        private bool Touchdown = false;
+        private bool Turnover = false;
 
         /// <summary>Creates a game with two teams and the number of drives the game will last</summary>
         /// <returns>An instance of the football game class</returns>
@@ -33,11 +35,15 @@ namespace ManagerGame
 
         /// <summary>Resets global variables for a new drive to start </summary>
         private void NewDrive(){
+            Console.WriteLine();
+            Console.WriteLine("Press any button to start next drive");
             currentDrive++;
             Down = 1;
             Distance = 10;
             YardLine = 25;
             Gain = 0;
+            Console.ReadKey();
+            Console.Clear();
         }
 
         /// <summary>Starts the flow of the game</summary>
@@ -115,7 +121,18 @@ namespace ManagerGame
             Console.WriteLine();
 
             // Prints team names and the current score
-            Console.WriteLine(this.hTeam.Name + "   -   " + this.aTeam.Name);
+            Console.ForegroundColor = ConsoleColor.White;
+            if (this.activeTeam == this.hTeam){
+                Console.ForegroundColor = ConsoleColor.Green;
+            }
+            Console.Write(this.hTeam.Name);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("   -   ");
+            if (this.activeTeam == this.aTeam){
+                Console.ForegroundColor = ConsoleColor.Green;
+            }
+            Console.WriteLine(this.aTeam.Name);
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(this.hTeamScore + "       " + this.aTeamScore);
 
 
@@ -136,24 +153,6 @@ namespace ManagerGame
                 }
                 Console.WriteLine(DownAndDistance());
             }
-
-            // Check if a touchdown has been scored
-            if (YardLine >= 100){
-                Console.WriteLine("TOUCHDOWN!");
-                Console.WriteLine(this.activeTeam.Name + " scored");
-                
-                if (this.activeTeam == this.aTeam){
-                    this.aTeamScore += 6;
-                }
-                
-                else {
-                    this.hTeamScore += 6;
-                }
-
-                ExtraPoint();
-                SwitchSides();
-                NewDrive();
-            }
         }
 
         /// <summary>
@@ -162,17 +161,34 @@ namespace ManagerGame
         /// based on what happened on the play, then repeats.
         /// </summary>
         private void GameRunning(){
+            UpdateField();
             while (currentDrive <= MaxDrives){
                 playtype = PlayTransformer.KeyToPlayType(Console.ReadKey().Key);
                 Console.WriteLine();
                 ExecutePlay();
+                // Check if a touchdown has been scored
+                if (YardLine >= 100){
+                    this.Touchdown = true;
+                    Console.WriteLine("TOUCHDOWN!");
+                    Console.WriteLine(this.activeTeam.Name + " scored");
+                    
+                    if (this.activeTeam == this.aTeam){
+                        this.aTeamScore += 6;
+                    }
+                    
+                    else {
+                        this.hTeamScore += 6;
+                    }
+
+                    ExtraPoint();
+                    SwitchSides();
+                }
                 UpdateField();
             }
         }
 
         /// <summary>Runs extra point after touchdown</summary>
         private void ExtraPoint(){
-            UpdateField();
             Console.WriteLine("Go for 2?");
             playtype = PlayTransformer.KeyToPlayType(Console.ReadKey().Key);
             
@@ -200,6 +216,7 @@ namespace ManagerGame
                 Down = 1;
                 Distance = 3;
                 YardLine = 97;
+                UpdateField();
                 playtype = PlayTransformer.KeyToPlayType(Console.ReadKey().Key);
                 ExecutePlay();
                 
@@ -219,6 +236,7 @@ namespace ManagerGame
                     Console.WriteLine("No Good!");
                 }
             }
+            Touchdown = false;
         }
 
         /// <summary>Pretty-print down and distance</summary>
@@ -274,7 +292,7 @@ namespace ManagerGame
                 Down++;
             }
 
-            else {
+            else if (Distance <= 0 && !Touchdown){
                 Console.WriteLine("FIRST DOWN!");
                 Down = 1;
                 Distance = 10;
