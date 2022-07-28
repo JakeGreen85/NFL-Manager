@@ -19,7 +19,7 @@ namespace ManagerGame
         private int aTeamScore = default!;
         private string[] field = default!;
         private bool Touchdown = false;
-        private bool Turnover = false;
+        private bool FirstDown = false;
 
         /// <summary>Creates a game with two teams and the number of drives the game will last</summary>
         /// <returns>An instance of the football game class</returns>
@@ -35,12 +35,12 @@ namespace ManagerGame
 
         /// <summary>Resets global variables for a new drive to start </summary>
         private void NewDrive(){
-            Console.WriteLine();
+            this.playtype = PlayType.DriveStart;
             Console.WriteLine("Press any button to start next drive");
             currentDrive++;
             Down = 1;
             Distance = 10;
-            YardLine = 25;
+            YardLine = 99;
             Gain = 0;
             Console.ReadKey();
             Console.Clear();
@@ -133,13 +133,50 @@ namespace ManagerGame
             }
             Console.WriteLine(this.aTeam.Name);
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine(this.hTeamScore + "       " + this.aTeamScore);
+            Console.WriteLine("  " + this.hTeamScore + "           " + this.aTeamScore);
 
 
             Console.WriteLine();
 
             // Prints the result of the last play
-            Console.WriteLine("Gain: " + Gain);
+            switch(playtype){
+                case PlayType.RunPlay :
+                    Console.WriteLine(this.activeTeam.Name + " run the ball.");
+                    switch (Gain){
+                        case (<0) :
+                            Console.WriteLine("But the runningback is caught in the backfield for a loss of " + Math.Abs(Gain) + " yards.");
+                            break;
+                        case (>0) :
+                            Console.WriteLine("Good blocking by the offensive line. The runningback finds a hole for a gain of " + Math.Abs(Gain) + " yards.");
+                            break;
+                        default :
+                            Console.WriteLine("They barely make it back to the line of scrimmage. No gain on the play.");
+                            break;
+                    }
+                    break;
+                case PlayType.PassPlay :
+                    Console.WriteLine(this.activeTeam.oPlayers[0].lName + " drops back to pass.");
+                    switch (Gain){
+                        case (<0) :
+                            Console.WriteLine("The defensive line gets through for a sack. Loss of " + Math.Abs(Gain) + " yards.");
+                            break;
+                        case (>0) :
+                            Console.WriteLine("He gets the throw off and finds a receiver for a gain of " + Math.Abs(Gain) + " yards.");
+                            break;
+                        default :
+                            Console.WriteLine("He throws the ball, but could not connect with the receiver. Incomplete.");
+                            break;
+                    }
+                    break;
+                default :
+                    Console.WriteLine("The " + this.activeTeam.Name + " offense comes out to start their drive.");
+                    break;
+            }
+
+            if (this.FirstDown){
+                Console.WriteLine("FIRST DOWN!");
+                this.FirstDown = false;
+            }
 
             Console.WriteLine();
             
@@ -163,11 +200,13 @@ namespace ManagerGame
         private void GameRunning(){
             UpdateField();
             while (currentDrive <= MaxDrives){
+                Console.WriteLine("R: Runplay, P: Pass play, (K: Punt, F: Field Goal)");
                 playtype = PlayTransformer.KeyToPlayType(Console.ReadKey().Key);
                 Console.WriteLine();
                 ExecutePlay();
                 // Check if a touchdown has been scored
                 if (YardLine >= 100){
+                    Console.Clear();
                     this.Touchdown = true;
                     Console.WriteLine("TOUCHDOWN!");
                     Console.WriteLine(this.activeTeam.Name + " scored");
@@ -185,12 +224,28 @@ namespace ManagerGame
                 }
                 UpdateField();
             }
+
+            if (this.aTeamScore != this.hTeamScore){
+                Console.Write("The ");
+                if (this.aTeamScore < this.hTeamScore){
+                    Console.Write(this.hTeam.Name);
+                }
+                else{
+                    Console.Write(this.aTeam.Name);
+                }
+                Console.WriteLine(" win!");
+            }
+            else {
+                Console.WriteLine("The game ended in a tie...");
+            }
         }
 
         /// <summary>Runs extra point after touchdown</summary>
         private void ExtraPoint(){
             Console.WriteLine("Go for 2?");
             playtype = PlayTransformer.KeyToPlayType(Console.ReadKey().Key);
+
+            Console.Clear();
             
             if (playtype == PlayType.OnePoint){
                 var kick = rand.Next(100);
@@ -263,6 +318,7 @@ namespace ManagerGame
 
         /// <summary>Executes a play call, after user input</summary>
         private void ExecutePlay(){
+            Console.Clear();
             // Check playtype
             switch (playtype){
                 
@@ -293,13 +349,14 @@ namespace ManagerGame
             }
 
             else if (Distance <= 0 && !Touchdown){
-                Console.WriteLine("FIRST DOWN!");
+                this.FirstDown = true;
                 Down = 1;
                 Distance = 10;
             }
 
             // Check for turnover, and let the user know
             if (Down > 4){
+                Console.Clear();
                 Console.WriteLine("TURNOVER");
                 SwitchSides();
                 Console.WriteLine(this.activeTeam.Name + " has possession");

@@ -1,12 +1,6 @@
 # NFL-Manager
  
 TO DO:
-- Fix flow of FootballGame.cs
-(
-    Does not always display the field correctly.
-    Incorrectness with display after touchdown / turnover / extra point.
-    Add UI (Pick plays, etc. just generally more UI)
-)
 
 - Finish team selector in Game.cs
 

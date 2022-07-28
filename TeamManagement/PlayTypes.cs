@@ -7,7 +7,8 @@ namespace ManagerGame
         PassPlay,
         Punt,
         OnePoint,
-        TwoPoint
+        TwoPoint,
+        DriveStart
     }
 
     public class PlayTransformer {
