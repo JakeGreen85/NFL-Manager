@@ -2,14 +2,13 @@
  
 TO DO:
 
-- Finish team selector in Game.cs
-
-- Add Main Menu (More UI)
-
-- Create save files to pick up where you left off, when the game is closed
+- Refine gained yards, based on different factors 
+(
+    Player overalls
+    Enhanced play calling (Short pass, medium pass, long pass, run up the middle, outside run, etc.)
+)
 
 - Anything else?
-
 
 -------------------------
 

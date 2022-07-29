@@ -10,18 +10,28 @@ namespace ManagerGame
             this.Pos = pos;
             switch(this.Pos){
                 case (Position.DE) :
+                    this.fName = DEfNames[rand.Next(DEfNames.Length-1)];
+                    this.lName = DElNames[rand.Next(DElNames.Length-1)];
                     this.Number = rand.Next(95, 100);
                     break;
                 case (Position.DT) :
+                    this.fName = DTfNames[rand.Next(DTfNames.Length-1)];
+                    this.lName = DTlNames[rand.Next(DTlNames.Length-1)];
                     this.Number = rand.Next(90, 95);
                     break;
                 case (Position.CB) :
+                    this.fName = CBfNames[rand.Next(CBfNames.Length-1)];
+                    this.lName = CBlNames[rand.Next(CBlNames.Length-1)];
                     this.Number = rand.Next(1, 5);
                     break;
                 case (Position.S) :
+                    this.fName = SfNames[rand.Next(SfNames.Length-1)];
+                    this.lName = SlNames[rand.Next(SlNames.Length-1)];
                     this.Number = rand.Next(40, 50);
                     break;
                 case (Position.LB) : 
+                    this.fName = LBfNames[rand.Next(LBfNames.Length-1)];
+                    this.lName = LBlNames[rand.Next(LBlNames.Length-1)];
                     this.Number = rand.Next(30, 40);
                     break;
                 default : 
@@ -86,7 +96,7 @@ namespace ManagerGame
         /// <summary>
         /// Creates an offensive player with the given position, number, age, overall, and name
         /// </summary>
-        public DPlayer(Position pos, int number, int age, int overall, string fname, string lname){
+        public DPlayer(string fname, string lname, int age, int number, Position pos, int overall){
             this.fName = fname;
             this.lName = lname;
             this.Age = age;

@@ -8,24 +8,32 @@ namespace ManagerGame
         /// This constructor randomizes all variables other than position.
         /// </summary>
         public OPlayer (Position pos) {
-            this.fName = "Patrick";
-            this.lName = "Brady";
             this.Age = rand.Next(21, 35);
             this.Pos = pos;
             switch(this.Pos){
                 case (Position.QB) :
+                    this.fName = QBfNames[rand.Next(QBfNames.Length)];
+                    this.lName = QBlNames[rand.Next(QBlNames.Length)];
                     this.Number = rand.Next(5, 10);
                     break;
                 case (Position.WR) :
+                    this.fName = WRfNames[rand.Next(WRfNames.Length)];
+                    this.lName = WRlNames[rand.Next(WRlNames.Length)];
                     this.Number = rand.Next(10, 20);
                     break;
                 case (Position.TE) :
+                    this.fName = TEfNames[rand.Next(TEfNames.Length)];
+                    this.lName = TElNames[rand.Next(TElNames.Length)];
                     this.Number = rand.Next(80, 90);
                     break;
                 case (Position.RB) :
+                    this.fName = RBfNames[rand.Next(RBfNames.Length)];
+                    this.lName = RBlNames[rand.Next(RBlNames.Length)];
                     this.Number = rand.Next(20, 30);
                     break;
                 case (Position.OL) : 
+                    this.fName = OLfNames[rand.Next(OLfNames.Length)];
+                    this.lName = OLlNames[rand.Next(OLlNames.Length)];
                     this.Number = rand.Next(50, 80);
                     break;
                 default : 
@@ -90,7 +98,7 @@ namespace ManagerGame
         /// <summary>
         /// Creates an offensive player with the given position, number, age, overall, and name
         /// </summary>
-        public OPlayer(Position pos, int number, int age, int overall, string fname, string lname){
+        public OPlayer(string fname, string lname, int age, int number, Position pos, int overall){
             this.fName = fname;
             this.lName = lname;
             this.Age = age;

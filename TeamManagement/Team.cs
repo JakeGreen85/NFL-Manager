@@ -2,6 +2,12 @@ using System;
 
 namespace ManagerGame {
     public class Team {
+        public ConferenceName conference;
+        public DivisionsName division;
+        public int wins = 0;
+        public int losses = 0;
+        public int ties = 0;
+        public float winpct {get; private set;} = 0;
 
         // Name of the team
         public string Name {get; private set;} = default!;
@@ -18,8 +24,10 @@ namespace ManagerGame {
         /// <summary>
         /// Creates a team with the given name and 5 random offensive players and 5 random defensive players
         /// </summary>
-        public Team (string name) {
+        public Team (string name, DivisionsName div, ConferenceName conf) {
             this.Name = name;
+            this.division = div;
+            this.conference = conf;
             oPlayers = new Player[5];
             dPlayers = new Player[5];
         }
@@ -45,6 +53,29 @@ namespace ManagerGame {
             }
         }
 
+        public void AddPlayer(string fname, string lname, int age, int number, Position pos, int overall){
+            for (int i = 0; i < this.oPlayers.Length; i++){
+                if (oPlayers[i].Pos == pos){
+                    this.oPlayers[i] = new OPlayer(fname, lname, age, number, pos, overall);
+                }
+            }
+            for (int i = 0; i < this.dPlayers.Length; i++){
+                if (dPlayers[i].Pos == pos){
+                    this.dPlayers[i] = new DPlayer(fname, lname, age, number, pos, overall);
+                }
+            }
+        }
+
+        public int TeamOverall(){
+            var temp = 0;
+            foreach(Player p in oPlayers){
+                temp += p.Overall;
+            }
+            foreach(Player p in dPlayers){
+                temp += p.Overall;
+            }
+            return temp / (oPlayers.Length + dPlayers.Length);
+        }
 
         /// <summary>
         /// Creates 5 random offensive players
@@ -68,5 +99,32 @@ namespace ManagerGame {
             this.dPlayers[4] = new DPlayer(Position.LB);
         }
 
+        public override string ToString()
+        {
+            var str1 = this.Name;
+            for(int i = 0; i < 15-this.Name.Length; i++){
+                str1 += " ";
+            }
+            str1 += this.wins;
+            if (this.wins<9){
+                str1 += "  -  ";
+            }
+            else{
+                str1 += " - ";
+            }
+            str1 += this.losses;
+            if (this.losses<9){
+                str1 += "  -  ";
+            }
+            else{
+                str1 += " - ";
+            }
+            str1 += this.ties;
+            if (this.ties<9){
+                str1 += " ";
+            }
+            str1 += $"{this.winpct, 5:G} %";
+            return str1;
+        }
     }
 }

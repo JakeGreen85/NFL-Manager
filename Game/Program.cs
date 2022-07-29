@@ -9,6 +9,8 @@ namespace ManagerGame
         /// </summary>
         static void Main(string[] args)
         {
+            Console.Clear();
+            
             // Creates an instance of the game
             Game game = new Game();  
 

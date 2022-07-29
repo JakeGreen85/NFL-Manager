@@ -1,0 +1,12 @@
+OFFENSE
+Aaron,Brady,31,8,QB,85
+Cam,Barkley,25,20,RB,93
+Stefon,Hill,28,19,WR,99
+Tyron,Johnson,26,67,OL,79
+Darren,Pitts,23,80,TE,81
+DEFENSE
+Lawrence,Watt,28,96,DE,69
+Fletcher,Campbell,22,90,DT,74
+Marshon,Lattimore,24,3,CB,92
+Marcus,Simmons,21,43,S,90
+Roquan,Kendricks,23,38,LB,84

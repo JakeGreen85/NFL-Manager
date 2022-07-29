@@ -37,5 +37,23 @@ namespace ManagerGame
             this.Overall += increase;
         }
 
+        public override string ToString()
+        {
+            var str1 = fName + " " + lName;
+            for(int i = 0; i < (30-(fName.Length+lName.Length)); i++){
+                str1 += " ";
+            }
+            str1 += Age + "      ";
+            if (Number <= 9){
+                str1 +="0";
+            }
+            str1 += Number + "    " + Pos;
+            if (Pos == Position.S){
+                str1 += " ";
+            }
+            str1 += "      " + Overall;
+            return str1;
+        }
+
     }
 }

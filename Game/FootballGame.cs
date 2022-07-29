@@ -4,22 +4,57 @@ namespace ManagerGame
 {
     public class FootballGame {
         private Random rand = new Random();
+
+        /// <summary>Home Team</summary>
         private Team hTeam = default!;
+
+        /// <summary>Away Team</summary>
         private Team aTeam = default!;
+
+        /// <summary>Max number of drives for a game</summary>
         private int MaxDrives = default!;
+
+        /// <summary>The current drive number</summary>
         private int currentDrive = 0;
+
+        /// <summary>The current down being played</summary>
         private int Down = default!;
+
+        /// <summary>The current distance before the team gets a new first down</summary>
         private int Distance = default!;
+
+        /// <summary>The current yard line where the ball is placed</summary>
         private int YardLine = default!;
+
+        /// <summary>How many yards the offense gained on the previous play</summary>
         private int Gain = default!;
+
+        /// <summary>The current play type, given by the player</summary>
         private PlayType playtype = default!;
+
+        /// <summary>The team that is currently on offense</summary>
         private Team activeTeam = default!;
+
+        /// <summary>The team that is currently on defense</summary>
         private Team inactiveTeam = default!;
+
+        /// <summary>The score of the home team</summary>
         private int hTeamScore = default!;
+
+        /// <summary>The score of the away team</summary>
         private int aTeamScore = default!;
+
+        /// <summary>The string representation of the field</summary>
         private string[] field = default!;
+
+        /// <summary>A boolean for whether or not a touchdown should be awarded</summary>
         private bool Touchdown = false;
+
+        /// <summary>A boolean for whether or not a first down should be awareded</summary>
         private bool FirstDown = false;
+
+        /// <summary>A boolean for whether or not a turnover happened</summary>
+        private bool Turnover = false;
 
         /// <summary>Creates a game with two teams and the number of drives the game will last</summary>
         /// <returns>An instance of the football game class</returns>
@@ -35,13 +70,22 @@ namespace ManagerGame
 
         /// <summary>Resets global variables for a new drive to start </summary>
         private void NewDrive(){
-            this.playtype = PlayType.DriveStart;
             Console.WriteLine("Press any button to start next drive");
             currentDrive++;
             Down = 1;
             Distance = 10;
-            YardLine = 99;
+            if (Turnover){
+                YardLine = 100 - YardLine;
+                Turnover = false;
+            }
+            else if (this.playtype == PlayType.Punt){
+                YardLine = 100 - (YardLine + 45);
+            }
+            else {
+                YardLine = 25;
+            }
             Gain = 0;
+            this.playtype = PlayType.DriveStart;
             Console.ReadKey();
             Console.Clear();
         }
@@ -49,6 +93,13 @@ namespace ManagerGame
         /// <summary>Starts the flow of the game</summary>
         public void StartGame(){
             GameRunning();
+        }
+
+        /// <summary>
+        /// Method for simulating a game
+        /// </summary>
+        public void SimGame(){
+            // SIMULATE A GAME
         }
 
         /// <summary>Switches the active team after a touchdown or turnover, usually</summary>
@@ -168,6 +219,9 @@ namespace ManagerGame
                             break;
                     }
                     break;
+                case PlayType.Punt :
+                    Console.WriteLine(this.activeTeam.Name + " punt the ball");
+                    break;
                 default :
                     Console.WriteLine("The " + this.activeTeam.Name + " offense comes out to start their drive.");
                     break;
@@ -238,6 +292,10 @@ namespace ManagerGame
             else {
                 Console.WriteLine("The game ended in a tie...");
             }
+
+            Console.WriteLine();
+            Console.WriteLine("Press any button to continue");
+            Console.ReadKey();
         }
 
         /// <summary>Runs extra point after touchdown</summary>
@@ -331,9 +389,8 @@ namespace ManagerGame
                     break;
                 
                 case PlayType.Punt :
-                    Down = 5;
-                    break;
-                
+                    SwitchSides();
+                    return;
                 default : 
                     Gain = rand.Next(-2, 10);
                     break;
@@ -358,6 +415,7 @@ namespace ManagerGame
             if (Down > 4){
                 Console.Clear();
                 Console.WriteLine("TURNOVER");
+                Turnover = true;
                 SwitchSides();
                 Console.WriteLine(this.activeTeam.Name + " has possession");
             }
