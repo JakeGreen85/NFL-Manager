@@ -3,19 +3,17 @@ using System;
 namespace ManagerGame
 {
     public class Game {
+        private string[] teamNames = new string[] {"Bears", "Lions", "Packers", "Vikings", "Falcons", "Panthers", "Saints", "Buccaneers", "Giants", "Cowboys", "Commanders", "Eagles", "Cardinals", "Rams", "49ers", "Seahawks", "Ravens", "Bengals", "Browns", "Steelers", "Texans", "Colts", "Jaguars", "Titans", "Bills", "Dolphins", "Patriots", "Jets", "Broncos", "Chiefs", "Raiders", "Chargers"};
+
+
+        private DivisionsName[] divisionNames = new DivisionsName[] {
+            DivisionsName.North, DivisionsName.South, DivisionsName.East, DivisionsName.West
+        };
         public Team[] teams = default!;
 
         /// <summary>User team</summary>
         Team t1 = default!; // User Team
-
-        /// <summary>CPU Team</summary>
-        Team t2 = default!; // CPU Team
-
-        /// <summary>CPU Team</summary>
-        Team t3 = default!; // CPU Team
-
-        /// <summary>CPU Team</summary>
-        Team t4 = default!; // CPU Team
+        Team t2 = default!;
 
         FootballGame fGame = default!;
         
@@ -24,15 +22,46 @@ namespace ManagerGame
         Random rand = new Random();
         /// <summary>Creates an instance of the game class</summary>
         public Game () {
-            
+            teams = new Team[32];
+            for(int i = 0; i < 32; i++){
+                if (i<16){
+                    if (i < 4){
+                        teams[i] = new Team(teamNames[i], DivisionsName.North, ConferenceName.NFC);
+                    }
+                    else if (i < 8){
+                        teams[i] = new Team(teamNames[i], DivisionsName.South, ConferenceName.NFC);
+                    }
+                    else if (i < 12){
+                        teams[i] = new Team(teamNames[i], DivisionsName.East, ConferenceName.NFC);
+                    }
+                    else{
+                        teams[i] = new Team(teamNames[i], DivisionsName.West, ConferenceName.NFC);
+                    }
+                }
+                if (i>=16){
+                    if (i < 4){
+                        teams[i] = new Team(teamNames[i], DivisionsName.North, ConferenceName.AFC);
+                    }
+                    else if (i < 8){
+                        teams[i] = new Team(teamNames[i], DivisionsName.South, ConferenceName.AFC);
+                    }
+                    else if (i < 12){
+                        teams[i] = new Team(teamNames[i], DivisionsName.East, ConferenceName.AFC);
+                    }
+                    else{
+                        teams[i] = new Team(teamNames[i], DivisionsName.West, ConferenceName.AFC);
+                    }
+                }
+                CreateRandomTeam(teams[i]);
+            }
         }
 
         /// <summary>Method called when the game should run</summary>
         public void Run(){
 
             // Create user team
-            t1 = new Team("Bears", DivisionsName.North, ConferenceName.NFC);
-            CreateRandomTeam(t1);
+            t1 = teams[0]; // Bears
+            t2 = teams[1]; // Lions
             var newPlayer = true;
             Console.WriteLine("Do you want to start a new game? (Y/N)");
             var uInput = Console.ReadKey();
@@ -46,6 +75,7 @@ namespace ManagerGame
             }
 
             if (newPlayer){
+                Console.Clear();
                 Console.WriteLine("Welcome to NFL Manager");
                 Console.WriteLine("To start off, we need to pick some players for your team");
                 Console.WriteLine("Press any key when you're ready");
@@ -55,17 +85,6 @@ namespace ManagerGame
             else {
                 LoadGame();
             }
-
-            // Create CPU teams
-            t2 = new Team("Packers", DivisionsName.North, ConferenceName.NFC);
-            t3 = new Team("Vikings", DivisionsName.North, ConferenceName.NFC);
-            t4 = new Team("Lions", DivisionsName.North, ConferenceName.NFC);
-
-            CreateRandomTeam(t2);
-            CreateRandomTeam(t3);
-            CreateRandomTeam(t4);
-
-            teams = new Team[] {t1, t2, t3, t4};
 
             while (playgame){
 

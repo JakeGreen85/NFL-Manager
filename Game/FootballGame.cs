@@ -279,18 +279,26 @@ namespace ManagerGame
                 UpdateField();
             }
 
+            Console.Clear();
+
             if (this.aTeamScore != this.hTeamScore){
                 Console.Write("The ");
                 if (this.aTeamScore < this.hTeamScore){
                     Console.Write(this.hTeam.Name);
+                    hTeam.wins ++;
+                    aTeam.losses ++;
                 }
                 else{
                     Console.Write(this.aTeam.Name);
+                    aTeam.wins ++;
+                    hTeam.losses ++;
                 }
                 Console.WriteLine(" win!");
             }
             else {
                 Console.WriteLine("The game ended in a tie...");
+                hTeam.ties ++;
+                aTeam.ties ++;
             }
 
             Console.WriteLine();
