@@ -1,0 +1,12 @@
+OFFENSE
+Ben,Rodgers,33,8,QB,86
+Saquon,Montgomery,23,20,RB,54
+Tyreek,Adams,21,14,WR,63
+Trent,Borom,26,52,OL,56
+Dalton,Goedert,29,84,TE,86
+DEFENSE
+Shaq,Ebukam,27,95,DE,52
+Aaron,Heyward,33,90,DT,87
+Jaylen,Alexander,28,3,CB,58
+Kevin,Byard,32,47,S,90
+Fred,Leonard,29,36,LB,77

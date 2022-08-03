@@ -1,0 +1,12 @@
+OFFENSE
+Justin,Cousins,32,8,QB,69
+Cam,Mostert,23,28,RB,95
+Tyreek,Austin,34,14,WR,89
+Taylor,Johnson,29,79,OL,78
+Travis,Andrews,31,84,TE,82
+DEFENSE
+Lawrence,Lawson,33,96,DE,66
+Fletcher,Cox,30,91,DT,77
+Marshon,Johnson,27,2,CB,53
+Eddie,Simmons,28,42,S,90
+Bobby,Smith,29,30,LB,53

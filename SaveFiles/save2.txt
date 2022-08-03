@@ -1,0 +1,12 @@
+OFFENSE
+Cam,Wilson,24,8,QB,82
+Samaje,Perine,24,21,RB,73
+Ja'marr,Chase,25,13,WR,61
+Tristan,Armstead,24,78,OL,80
+Kyle,Waller,30,89,TE,50
+DEFENSE
+Lawrence,Guy,21,96,DE,88
+Calais,Donald,25,90,DT,81
+Jaire,Ramsey,31,3,CB,75
+Justin,Williams,26,47,S,71
+Bobby,Smith,31,35,LB,78

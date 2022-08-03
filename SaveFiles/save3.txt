@@ -1,0 +1,12 @@
+OFFENSE
+Russell,Fields,26,6,QB,84
+Cam,Akers,34,22,RB,51
+Davante,Davis,24,17,WR,84
+Trent,Williams,24,74,OL,51
+Dalton,Kelce,30,87,TE,91
+DEFENSE
+Nick,Ebukam,26,98,DE,68
+Aaron,Cox,30,92,DT,56
+Jaire,Alexander,23,4,CB,69
+Kevin,Byard,27,40,S,93
+Eric,Wagner,29,36,LB,68

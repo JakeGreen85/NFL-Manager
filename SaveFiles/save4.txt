@@ -1,0 +1,12 @@
+OFFENSE
+Justin,Tannehill,22,9,QB,51
+Samaje,Perine,24,29,RB,50
+Corey,Austin,29,16,WR,77
+Larry,Wirfs,32,59,OL,72
+Mark,Andrews,28,83,TE,77
+DEFENSE
+JJ,Young,32,96,DE,78
+Fletcher,Campbell,29,92,DT,78
+Jaylon,Alexander,21,2,CB,58
+Marcus,Williams,34,43,S,63
+Darius,Leonard,25,30,LB,74

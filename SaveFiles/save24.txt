@@ -1,0 +1,12 @@
+OFFENSE
+Patrick,Fields,21,5,QB,62
+Saquon,Barkley,31,23,RB,61
+Tyreek,Hill,32,17,WR,54
+Larry,Lewan,33,56,OL,61
+Mike,Goedert,27,80,TE,96
+DEFENSE
+Nick,Young,22,95,DE,50
+Aaron,Heyward,28,93,DT,98
+Marshon,Alexander,31,1,CB,70
+Marcus,Byard,25,47,S,61
+Fred,Warner,28,33,LB,63

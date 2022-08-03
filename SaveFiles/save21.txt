@@ -1,0 +1,12 @@
+OFFENSE
+Jared,Goff,21,7,QB,89
+Cam,Montgomery,27,22,RB,97
+Jerry,Diggs,28,19,WR,73
+Taylor,Wirfs,30,71,OL,68
+Kyle,Andrews,24,87,TE,90
+DEFENSE
+Samson,Bosa,31,97,DE,79
+Aaron,Heyward,29,93,DT,94
+Jaylen,Ramsey,23,1,CB,53
+Justin,Byard,24,44,S,64
+Fred,Kendricks,23,34,LB,56

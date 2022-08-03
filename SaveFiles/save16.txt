@@ -1,0 +1,12 @@
+OFFENSE
+Russell,Mahomes,34,6,QB,85
+Christian,McCaffrey,27,27,RB,55
+Tyreek,Diggs,27,13,WR,91
+David,Wirfs,31,52,OL,61
+Travis,Goedert,30,80,TE,91
+DEFENSE
+Lawrence,Watt,25,95,DE,77
+Aaron,Clark,26,93,DT,53
+Marshon,Alexander,33,1,CB,57
+Eddie,Williams,28,47,S,65
+Darius,Wagner,32,39,LB,68

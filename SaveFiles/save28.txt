@@ -1,0 +1,12 @@
+OFFENSE
+Jared,Brees,25,8,QB,94
+David,Kamara,31,22,RB,90
+Ja'marr,Hill,31,13,WR,77
+Larry,Johnson,34,72,OL,62
+Darren,Schultz,28,84,TE,98
+DEFENSE
+Lawrence,Bosa,26,96,DE,90
+Calais,Clark,25,90,DT,76
+Jaylen,Alexander,22,4,CB,84
+Kevin,Jackson,26,46,S,67
+Eric,Warner,27,30,LB,86

@@ -1,0 +1,12 @@
+OFFENSE
+Sam,Fields,22,6,QB,94
+Saquon,Montgomery,21,23,RB,58
+Davante,Austin,22,17,WR,86
+Tristan,Lewan,23,69,OL,72
+Dalton,Kelce,34,87,TE,85
+DEFENSE
+Samson,Lawson,29,98,DE,81
+Calais,Heyward,28,90,DT,89
+Jaylen,Ramsey,23,2,CB,69
+Marcus,Byard,21,44,S,62
+Darius,Smith,27,33,LB,55

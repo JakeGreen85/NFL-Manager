@@ -1,0 +1,12 @@
+OFFENSE
+Zach,Tannehill,23,9,QB,96
+Alvin,Mostert,28,20,RB,54
+Jerry,Adams,21,11,WR,68
+Larry,Bakhtiari,33,54,OL,83
+Mark,Schultz,30,81,TE,58
+DEFENSE
+Shaq,Watt,25,95,DE,84
+Calais,Heyward,32,93,DT,86
+Jaire,Lattimore,26,3,CB,68
+Kevin,Williams,26,43,S,56
+Darius,Warner,22,32,LB,86

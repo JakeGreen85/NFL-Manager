@@ -1,0 +1,12 @@
+OFFENSE
+Matthew,Cousins,34,9,QB,80
+Joe,Akers,31,26,RB,56
+Ja'marr,Davis,31,13,WR,95
+Tyron,Johnson,33,59,OL,72
+Dallas,Andrews,22,86,TE,90
+DEFENSE
+Shaq,Guy,23,95,DE,55
+Fletcher,Campbell,30,93,DT,89
+Jaylon,Lattimore,32,4,CB,80
+Eddie,Simmons,21,40,S,78
+Darius,Wagner,24,32,LB,84

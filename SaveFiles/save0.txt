@@ -1,0 +1,12 @@
+OFFENSE
+Matt,Wilson,24,6,QB,87
+Alvin,Mixon,32,20,RB,92
+Corey,Davis,33,11,WR,88
+Terron,Lewan,32,52,OL,92
+Dalton,Ertz,33,85,TE,91
+DEFENSE
+Shaq,Watt,24,99,DE,98
+Cameron,Donald,34,92,DT,97
+Jaire,Ramsey,34,2,CB,84
+Marcus,Simmons,28,40,S,98
+Darius,Warner,27,38,LB,93

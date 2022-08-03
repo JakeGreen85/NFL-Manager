@@ -1,0 +1,12 @@
+OFFENSE
+Sam,Dalton,28,8,QB,62
+Raheem,McCaffrey,30,28,RB,67
+Tavon,Austin,29,15,WR,69
+David,Johnson,26,71,OL,53
+Darren,Pitts,27,83,TE,87
+DEFENSE
+JJ,Ebukam,31,99,DE,93
+Aaron,Heyward,33,93,DT,52
+Jaylen,Lattimore,31,2,CB,94
+Kevin,Byard,26,49,S,56
+Bobby,Kendricks,24,34,LB,79

@@ -1,0 +1,12 @@
+OFFENSE
+Matthew,Wilson,28,5,QB,77
+Joe,Akers,28,27,RB,53
+Jerry,Adams,26,16,WR,60
+David,Borom,25,60,OL,91
+Mike,Waller,30,89,TE,64
+DEFENSE
+JJ,Watt,24,97,DE,55
+Kenny,Heyward,21,91,DT,88
+Jaire,Alexander,30,1,CB,82
+Justin,Jackson,25,48,S,53
+Darius,Warner,25,30,LB,65

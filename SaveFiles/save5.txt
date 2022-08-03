@@ -1,0 +1,12 @@
+OFFENSE
+Ben,Wilson,32,7,QB,68
+Alvin,McCaffrey,29,23,RB,57
+Corey,Hill,31,18,WR,67
+Taylor,Bakhtiari,25,74,OL,83
+Dallas,Ertz,22,83,TE,88
+DEFENSE
+Samson,Bosa,29,96,DE,56
+Cameron,Donald,27,92,DT,52
+Jaylon,Ramsey,25,1,CB,78
+Justin,Williams,27,41,S,93
+Bobby,Smith,28,31,LB,66

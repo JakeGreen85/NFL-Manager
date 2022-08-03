@@ -1,0 +1,12 @@
+OFFENSE
+Aaron,Tannehill,23,7,QB,84
+Christian,Perine,34,20,RB,87
+Stefon,Jeudy,27,19,WR,53
+Taylor,Williams,30,64,OL,52
+Darren,Ertz,33,81,TE,80
+DEFENSE
+Chase,Guy,23,99,DE,74
+Calais,Campbell,22,93,DT,65
+Jaire,Ramsey,27,3,CB,61
+Eddie,Byard,21,44,S,99
+Bobby,Wagner,34,38,LB,83

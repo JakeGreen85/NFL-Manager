@@ -1,0 +1,12 @@
+OFFENSE
+Andy,Brees,34,9,QB,83
+Raheem,Perine,31,29,RB,72
+Davante,Chase,30,11,WR,98
+Tyron,Wirfs,32,66,OL,62
+Kyle,Schultz,24,88,TE,87
+DEFENSE
+Chase,Guy,29,99,DE,70
+Calais,Cox,28,92,DT,82
+Jaylen,Ramsey,26,2,CB,57
+Kevin,Simmons,22,42,S,87
+Eric,Warner,27,34,LB,54

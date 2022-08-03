@@ -1,0 +1,12 @@
+OFFENSE
+Aaron,Tannehill,29,9,QB,56
+Raheem,Akers,32,29,RB,90
+Stefon,Jeudy,31,17,WR,64
+Lane,Johnson,33,56,OL,90
+Mike,Waller,25,82,TE,64
+DEFENSE
+JJ,Watt,34,95,DE,73
+Aaron,Donald,25,94,DT,68
+Jaylon,Ramsey,31,1,CB,52
+Marcus,Simmons,22,42,S,56
+Darius,Smith,26,36,LB,86

@@ -1,0 +1,12 @@
+OFFENSE
+Zach,Stafford,32,8,QB,86
+Christian,Kamara,33,29,RB,56
+Tavon,Davis,33,14,WR,78
+Trent,Lewan,23,73,OL,59
+Mike,Andrews,34,89,TE,73
+DEFENSE
+Joey,Guy,29,95,DE,88
+Calais,Clark,29,90,DT,55
+Jaire,Johnson,27,1,CB,53
+Marcus,Jackson,23,41,S,82
+Bobby,Wagner,29,30,LB,70

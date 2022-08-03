@@ -1,0 +1,12 @@
+OFFENSE
+Matt,Mahomes,32,9,QB,90
+Christian,Perine,32,24,RB,50
+Davante,Chase,22,10,WR,61
+Tyron,Armstead,23,65,OL,98
+Darren,Waller,27,88,TE,71
+DEFENSE
+JJ,Watt,26,98,DE,58
+Cameron,Clark,23,94,DT,57
+Marshon,Johnson,29,1,CB,83
+Justin,Simmons,27,41,S,51
+Darius,Smith,30,31,LB,66

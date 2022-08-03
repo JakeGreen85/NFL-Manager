@@ -1,0 +1,12 @@
+OFFENSE
+Matt,Cousins,25,7,QB,90
+Samaje,Perine,34,28,RB,73
+Jerry,Chase,24,18,WR,51
+Terron,Armstead,22,76,OL,55
+Travis,Ertz,34,89,TE,83
+DEFENSE
+Nick,Guy,33,98,DE,62
+Calais,Heyward,32,93,DT,95
+Jaylon,Lattimore,32,1,CB,56
+Eddie,Byard,22,44,S,55
+Bobby,Wagner,23,31,LB,77

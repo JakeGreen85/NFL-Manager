@@ -1,0 +1,12 @@
+OFFENSE
+Matthew,Stafford,30,6,QB,65
+Cam,Barkley,33,24,RB,82
+Stefon,Davis,34,10,WR,97
+Larry,Lewan,24,57,OL,78
+Mike,Kelce,22,82,TE,82
+DEFENSE
+Chase,Lawson,27,99,DE,99
+Aaron,Clark,22,90,DT,82
+Marshon,Johnson,21,3,CB,75
+Eddie,Williams,32,44,S,87
+Bobby,Warner,30,34,LB,72

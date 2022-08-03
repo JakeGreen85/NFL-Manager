@@ -1,0 +1,12 @@
+OFFENSE
+Ben,Cousins,23,5,QB,66
+Christian,Barkley,27,21,RB,72
+Jerry,Davis,27,14,WR,71
+Tristan,Borom,26,64,OL,61
+Travis,Kelce,34,87,TE,60
+DEFENSE
+Chase,Guy,29,95,DE,74
+Aaron,Clark,23,94,DT,68
+Jaire,Lattimore,23,4,CB,71
+Eddie,Byard,31,48,S,92
+Roquan,Smith,24,38,LB,74

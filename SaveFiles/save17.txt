@@ -1,0 +1,12 @@
+OFFENSE
+Justin,Fields,22,7,QB,76
+Alvin,Barkley,30,26,RB,62
+Tyreek,Chase,31,14,WR,90
+David,Borom,25,50,OL,99
+Mike,Gesicki,29,88,TE,77
+DEFENSE
+Nick,Lawson,29,95,DE,92
+Cameron,Heyward,33,93,DT,59
+Jaylen,Lattimore,24,1,CB,87
+Justin,Williams,26,41,S,86
+Darius,Smith,34,34,LB,76

@@ -1,0 +1,12 @@
+OFFENSE
+Matt,Dalton,31,7,QB,76
+Joe,McCaffrey,26,22,RB,61
+Tavon,Austin,24,16,WR,57
+Trent,Smith,27,75,OL,76
+Mark,Kelce,31,80,TE,70
+DEFENSE
+Shaq,Bosa,32,95,DE,53
+Kenny,Clark,27,91,DT,87
+Jaire,Johnson,24,1,CB,50
+Kevin,Byard,29,49,S,51
+Bobby,Warner,31,37,LB,59

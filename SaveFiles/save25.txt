@@ -1,0 +1,12 @@
+OFFENSE
+Sam,Brees,31,9,QB,85
+Samaje,Mostert,34,20,RB,99
+Tyreek,Adams,33,13,WR,64
+Terron,Bakhtiari,25,59,OL,71
+Dalton,Goedert,33,85,TE,85
+DEFENSE
+Chase,Ebukam,32,95,DE,83
+Aaron,Donald,31,91,DT,61
+Jaylen,Alexander,25,3,CB,79
+Eddie,Jackson,23,48,S,72
+Eric,Leonard,23,39,LB,58

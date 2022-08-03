@@ -1,0 +1,12 @@
+OFFENSE
+Justin,Brady,28,8,QB,77
+Raheem,Mixon,23,28,RB,51
+Ja'marr,Davis,30,10,WR,52
+Larry,Bakhtiari,28,61,OL,72
+Dalton,Waller,32,89,TE,95
+DEFENSE
+Samson,Lawson,32,98,DE,78
+Aaron,Heyward,33,93,DT,61
+Jaire,Ramsey,33,2,CB,62
+Justin,Jackson,24,45,S,60
+Roquan,Warner,25,37,LB,78

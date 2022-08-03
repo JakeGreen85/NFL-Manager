@@ -1,0 +1,12 @@
+OFFENSE
+Justin,Rodgers,21,8,QB,79
+Joe,Montgomery,25,27,RB,90
+Ja'marr,Adams,24,16,WR,50
+David,Lewan,28,74,OL,57
+Mark,Gesicki,33,83,TE,82
+DEFENSE
+Samson,Lawson,32,99,DE,64
+Cameron,Donald,22,93,DT,79
+Marshon,Lattimore,32,2,CB,73
+Kevin,Simmons,24,49,S,76
+Eric,Warner,27,33,LB,63

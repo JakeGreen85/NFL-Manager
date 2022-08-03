@@ -1,0 +1,12 @@
+OFFENSE
+Cam,Newton,31,8,QB,54
+Cam,Montgomery,26,20,RB,81
+Tavon,Diggs,27,16,WR,84
+Tristan,Bakhtiari,28,74,OL,58
+Travis,Kelce,34,81,TE,65
+DEFENSE
+Joey,Watt,27,95,DE,64
+Fletcher,Donald,23,93,DT,63
+Marshon,Lattimore,34,2,CB,66
+Marcus,Byard,21,49,S,64
+Eric,Warner,23,31,LB,79

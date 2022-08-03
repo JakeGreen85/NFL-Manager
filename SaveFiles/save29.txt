@@ -1,0 +1,12 @@
+OFFENSE
+Andy,Stafford,24,9,QB,90
+Christian,Montgomery,29,24,RB,89
+Tavon,Diggs,22,18,WR,72
+Taylor,Bakhtiari,28,59,OL,60
+Kyle,Ertz,28,87,TE,94
+DEFENSE
+Shaq,Young,23,97,DE,59
+Cameron,Heyward,21,90,DT,50
+Jaylen,Lattimore,22,2,CB,69
+Kevin,Simmons,24,47,S,95
+Roquan,Wagner,30,30,LB,74
