@@ -54,15 +54,37 @@ namespace ManagerGame {
         }
 
         public void AddPlayer(string fname, string lname, int age, int number, Position pos, int overall){
-            for (int i = 0; i < this.oPlayers.Length; i++){
-                if (oPlayers[i].Pos == pos){
-                    this.oPlayers[i] = new OPlayer(fname, lname, age, number, pos, overall);
-                }
-            }
-            for (int i = 0; i < this.dPlayers.Length; i++){
-                if (dPlayers[i].Pos == pos){
-                    this.dPlayers[i] = new DPlayer(fname, lname, age, number, pos, overall);
-                }
+            switch(pos){
+                case Position.QB :
+                    oPlayers[0] = new OPlayer(fname, lname, age, number, pos, overall);
+                    break;
+                case Position.RB :
+                    oPlayers[1] = new OPlayer(fname, lname, age, number, pos, overall);
+                    break;
+                case Position.WR :
+                    oPlayers[2] = new OPlayer(fname, lname, age, number, pos, overall);
+                    break;
+                case Position.OL :
+                    oPlayers[3] = new OPlayer(fname, lname, age, number, pos, overall);
+                    break;
+                case Position.TE :
+                    oPlayers[4] = new OPlayer(fname, lname, age, number, pos, overall);
+                    break;
+                case Position.DE :
+                    dPlayers[0] = new DPlayer(fname, lname, age, number, pos, overall);
+                    break;
+                case Position.DT :
+                    dPlayers[1] = new DPlayer(fname, lname, age, number, pos, overall);
+                    break;
+                case Position.CB :
+                    dPlayers[2] = new DPlayer(fname, lname, age, number, pos, overall);
+                    break;
+                case Position.S :
+                    dPlayers[3] = new DPlayer(fname, lname, age, number, pos, overall);
+                    break;
+                case Position.LB :
+                    dPlayers[4] = new DPlayer(fname, lname, age, number, pos, overall);
+                    break;
             }
         }
 
