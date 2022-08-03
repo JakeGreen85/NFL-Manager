@@ -85,8 +85,8 @@ namespace ManagerGame
                 YardLine = 25;
             }
             Gain = 0;
-            this.playtype = PlayType.DriveStart;
             Console.ReadKey();
+            this.playtype = PlayType.DriveStart;
             Console.Clear();
         }
 
@@ -100,6 +100,10 @@ namespace ManagerGame
         /// </summary>
         public void SimGame(){
             // SIMULATE A GAME
+        }
+
+        public void SimDrive(){
+            // SIMULATE A DRIVE
         }
 
         /// <summary>Switches the active team after a touchdown or turnover, usually</summary>
@@ -247,7 +251,7 @@ namespace ManagerGame
         }
 
         /// <summary>
-        ///Main code for running a game. Runs until max drives has been reached. 
+        /// Main code for running a game. Runs until max drives has been reached. 
         /// Responsibilities include: getting user input, execute play, and give user feedback 
         /// based on what happened on the play, then repeats.
         /// </summary>
