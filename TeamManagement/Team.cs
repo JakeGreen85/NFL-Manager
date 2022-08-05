@@ -145,7 +145,7 @@ namespace ManagerGame {
             if (this.ties<9){
                 str1 += " ";
             }
-            str1 += $"{this.winpct, 5:G} %";
+            str1 += $"{(this.wins/(this.wins + this.losses + this.ties)) * 100, 5:G} %";
             return str1;
         }
     }
