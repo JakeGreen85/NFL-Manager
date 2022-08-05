@@ -103,7 +103,8 @@ namespace ManagerGame
         }
 
         public void SimDrive(){
-            // SIMULATE A DRIVE
+            this.playtype = AI.SimPlay(this.Down, this.Distance);
+            ExecutePlay();
         }
 
         /// <summary>Switches the active team after a touchdown or turnover, usually</summary>
@@ -258,10 +259,17 @@ namespace ManagerGame
         private void GameRunning(){
             UpdateField();
             while (currentDrive <= MaxDrives){
-                Console.WriteLine("R: Runplay, P: Pass play, (K: Punt, F: Field Goal)");
-                playtype = PlayTransformer.KeyToPlayType(Console.ReadKey().Key);
-                Console.WriteLine();
-                ExecutePlay();
+                if (activeTeam == this.hTeam){
+                    Console.WriteLine("R: Runplay, P: Pass play, (K: Punt, F: Field Goal)");
+                    playtype = PlayTransformer.KeyToPlayType(Console.ReadKey().Key);
+                    Console.WriteLine();
+                    ExecutePlay();
+                }
+                else {
+                    Console.ReadKey();
+                    SimDrive();
+                }
+
                 // Check if a touchdown has been scored
                 if (YardLine >= 100){
                     Console.Clear();
@@ -312,8 +320,13 @@ namespace ManagerGame
 
         /// <summary>Runs extra point after touchdown</summary>
         private void ExtraPoint(){
-            Console.WriteLine("Go for 2?");
-            playtype = PlayTransformer.KeyToPlayType(Console.ReadKey().Key);
+            if (activeTeam == hTeam){
+                Console.WriteLine("Go for 2?");
+                playtype = PlayTransformer.KeyToPlayType(Console.ReadKey().Key);
+            }
+            else {
+                playtype = AI.ExtraPoint();
+            }
 
             Console.Clear();
             
@@ -342,7 +355,12 @@ namespace ManagerGame
                 Distance = 3;
                 YardLine = 97;
                 UpdateField();
-                playtype = PlayTransformer.KeyToPlayType(Console.ReadKey().Key);
+                if (activeTeam == hTeam){
+                    playtype = PlayTransformer.KeyToPlayType(Console.ReadKey().Key);
+                }
+                else{
+                    playtype = AI.ExtraPointPlay();
+                }
                 ExecutePlay();
                 
                 if (YardLine >= 100){
