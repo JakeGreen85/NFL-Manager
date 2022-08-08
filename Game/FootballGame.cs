@@ -102,9 +102,8 @@ namespace ManagerGame
             // SIMULATE A GAME
         }
 
-        public void SimDrive(){
+        public void SimPlay(){
             this.playtype = AI.SimPlay(this.Down, this.Distance);
-            ExecutePlay();
         }
 
         /// <summary>Switches the active team after a touchdown or turnover, usually</summary>
@@ -120,60 +119,8 @@ namespace ManagerGame
         /// Pretty-prints field, score, down and distance, and where on the field they are
         /// </summary>
         private void UpdateField(){
-            // Clears console for better visuals
-            Console.Clear();
-
-            // For loop to print yard markers (0, 10, 20, 30, etc.)
-            for(int j = 0; j < 100; j++){
-                if (j % 10 == 0){
-                    
-                    if (j <= 50){
-                        Console.Write(j);
-                    }
-                    
-                    else {
-                        Console.Write(50 - (j % 50));
-                    }
-                }
-                
-                else if (j % 10 == 1){
-                }
-                
-                else {
-                    Console.Write(" ");
-                }
-            }
-            Console.WriteLine("0");
-
-            // Updates the field (specifically where the ball and first down is)
-            for(int i = 0; i < this.field.Length; i++){
-                if (i == YardLine){
-                    this.field[i] = "*";
-                }
-                
-                else if (i == YardLine + Distance){
-                    this.field[i] = "|";
-                }
-                
-                else{
-                    this.field[i] = "_";
-                }
-            }
-
-            // Prints the updated field
-            foreach(string s in this.field){
-                if (s == "*"){
-                    Console.ForegroundColor = ConsoleColor.Green;
-                }
-                
-                else if (s == "|"){
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
-                }
-                Console.Write(s);
-                Console.ForegroundColor = ConsoleColor.White;
-            }
-
-
+            
+            GamePrints.UpdateField(playtype, YardLine, Distance);
             Console.WriteLine();
 
             // Prints team names and the current score
@@ -191,46 +138,9 @@ namespace ManagerGame
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("  " + this.hTeamScore + "           " + this.aTeamScore);
 
-
             Console.WriteLine();
 
-            // Prints the result of the last play
-            switch(playtype){
-                case PlayType.RunPlay :
-                    Console.WriteLine(this.activeTeam.Name + " run the ball.");
-                    switch (Gain){
-                        case (<0) :
-                            Console.WriteLine("But the runningback is caught in the backfield for a loss of " + Math.Abs(Gain) + " yards.");
-                            break;
-                        case (>0) :
-                            Console.WriteLine("Good blocking by the offensive line. The runningback finds a hole for a gain of " + Math.Abs(Gain) + " yards.");
-                            break;
-                        default :
-                            Console.WriteLine("They barely make it back to the line of scrimmage. No gain on the play.");
-                            break;
-                    }
-                    break;
-                case PlayType.PassPlay :
-                    Console.WriteLine(this.activeTeam.oPlayers[0].lName + " drops back to pass.");
-                    switch (Gain){
-                        case (<0) :
-                            Console.WriteLine("The defensive line gets through for a sack. Loss of " + Math.Abs(Gain) + " yards.");
-                            break;
-                        case (>0) :
-                            Console.WriteLine("He gets the throw off and finds a receiver for a gain of " + Math.Abs(Gain) + " yards.");
-                            break;
-                        default :
-                            Console.WriteLine("He throws the ball, but could not connect with the receiver. Incomplete.");
-                            break;
-                    }
-                    break;
-                case PlayType.Punt :
-                    Console.WriteLine(this.activeTeam.Name + " punt the ball");
-                    break;
-                default :
-                    Console.WriteLine("The " + this.activeTeam.Name + " offense comes out to start their drive.");
-                    break;
-            }
+            Commentary.ExPlay(playtype, Gain, this.activeTeam);
 
             if (this.FirstDown){
                 Console.WriteLine("FIRST DOWN!");
@@ -251,6 +161,42 @@ namespace ManagerGame
             }
         }
 
+        private void AskUser(){
+            Console.WriteLine("R: Runplay, P: Pass play, (K: Punt, F: Field Goal)");
+            playtype = PlayTransformer.KeyToPlayType(Console.ReadKey().Key);
+            Console.WriteLine();
+        }
+
+        private bool CheckFirstDown(){
+            if (Distance > 0){
+                Down++;
+            }
+
+            else if (Distance <= 0 && !Touchdown){
+                Down = 1;
+                Distance = 10;
+                return true;
+            }
+
+            // Check for turnover, and let the user know
+            else if (Down > 4){
+                Console.Clear();
+                Console.WriteLine("TURNOVER");
+                Turnover = true;
+                SwitchSides();
+                Console.WriteLine(this.activeTeam.Name + " has possession");
+                return false;
+            }
+            return false;
+        }
+
+        private bool CheckTouchDown(){
+            if (YardLine >= 100){
+                return true;
+            }
+            else return false;
+        }
+
         /// <summary>
         /// Main code for running a game. Runs until max drives has been reached. 
         /// Responsibilities include: getting user input, execute play, and give user feedback 
@@ -260,18 +206,20 @@ namespace ManagerGame
             UpdateField();
             while (currentDrive <= MaxDrives){
                 if (activeTeam == this.hTeam){
-                    Console.WriteLine("R: Runplay, P: Pass play, (K: Punt, F: Field Goal)");
-                    playtype = PlayTransformer.KeyToPlayType(Console.ReadKey().Key);
-                    Console.WriteLine();
-                    ExecutePlay();
+                    AskUser();
                 }
                 else {
                     Console.ReadKey();
-                    SimDrive();
+                    SimPlay();
                 }
 
+                ExecutePlay();
+
+                FirstDown = CheckFirstDown();
+                Touchdown = CheckTouchDown();
+
                 // Check if a touchdown has been scored
-                if (YardLine >= 100){
+                if (Touchdown){
                     Console.Clear();
                     this.Touchdown = true;
                     Console.WriteLine("TOUCHDOWN!");
@@ -287,6 +235,9 @@ namespace ManagerGame
 
                     ExtraPoint();
                     SwitchSides();
+                }
+                else if (FirstDown){
+                    Console.WriteLine("FIRST DOWN!");
                 }
                 UpdateField();
             }
@@ -430,25 +381,10 @@ namespace ManagerGame
             YardLine += Gain;
             Distance -= Gain;
 
+            Touchdown = CheckTouchDown();
+
             // Change down and check if the team gained a first down
-            if (Distance > 0){
-                Down++;
-            }
-
-            else if (Distance <= 0 && !Touchdown){
-                this.FirstDown = true;
-                Down = 1;
-                Distance = 10;
-            }
-
-            // Check for turnover, and let the user know
-            if (Down > 4){
-                Console.Clear();
-                Console.WriteLine("TURNOVER");
-                Turnover = true;
-                SwitchSides();
-                Console.WriteLine(this.activeTeam.Name + " has possession");
-            }
+            FirstDown = CheckFirstDown();
         }
     }
 }
